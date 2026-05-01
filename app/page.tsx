@@ -251,30 +251,41 @@ export default function Home() {
   const decisioningInsights = buildDecisioningInsights(events, journeyLog.segment);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 lg:px-8">
-        <header className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Loomi-Style Campaign Builder
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight">
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-10 lg:px-8">
+        <div className="flex items-center justify-between rounded-2xl bg-slate-900/70 px-4 py-3 shadow-lg shadow-slate-950/40 backdrop-blur transition-all duration-200">
+          <p className="text-sm font-semibold text-slate-100">Loomi Campaign Agent</p>
+          <span
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 ${
+              data
+                ? "bg-emerald-500/20 text-emerald-300 shadow-md shadow-emerald-500/20"
+                : "bg-slate-800 text-slate-300"
+            }`}
+          >
+            Connected to Bloomreach MCP
+          </span>
+        </div>
+
+        <header className="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/70 p-8 shadow-xl shadow-black/30 transition-all duration-200 hover:shadow-indigo-900/20">
+          <p className="text-sm font-medium text-indigo-300/90">Loomi-Style Campaign Builder</p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
             AI campaign strategist for lifecycle teams
           </h1>
-          <p className="mt-3 max-w-3xl text-sm text-slate-600">
+          <p className="mt-4 max-w-3xl text-base text-slate-300/85">
             Explore a Bloomreach-style demo with campaign planning, customer event simulation, and
             journey execution logs.
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2 rounded-full bg-slate-900/70 p-1">
             {(["Campaign Agent", "Event Simulator", "Journey Execution Log"] as DemoTab[]).map(
               (tab) => (
                 <button
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 active:scale-[0.98] ${
                     activeTab === tab
-                      ? "bg-indigo-600 text-white"
-                      : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
+                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-lg shadow-indigo-900/40"
+                      : "text-slate-300 hover:bg-slate-800/80"
                   }`}
                 >
                   {tab}
@@ -282,55 +293,55 @@ export default function Home() {
               ),
             )}
           </div>
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-4 text-sm text-slate-400/90">
             Simulates Bloomreach Engagement-style Customer, Event, Catalog, and Email API workflows.
           </p>
         </header>
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <section className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
           <h2 className="text-base font-semibold">API Mapping</h2>
-          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+          <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-300/90">
             <li>
-              <span className="font-semibold text-slate-900">Tracking API:</span> collects
+              <span className="font-semibold text-slate-100">Tracking API:</span> collects
               product_view, cart_add, purchase, email_open, and email_click events.
             </li>
             <li>
-              <span className="font-semibold text-slate-900">Customer API:</span> updates customer
+              <span className="font-semibold text-slate-100">Customer API:</span> updates customer
               profile, segmentation, and prediction state.
             </li>
             <li>
-              <span className="font-semibold text-slate-900">Catalog API:</span> provides product
+              <span className="font-semibold text-slate-100">Catalog API:</span> provides product
               metadata for recommendations.
             </li>
             <li>
-              <span className="font-semibold text-slate-900">Email API:</span> represents the
+              <span className="font-semibold text-slate-100">Email API:</span> represents the
               eventual send/sync layer.
             </li>
             <li>
-              <span className="font-semibold text-slate-900">Webhook/Orchestration Layer:</span>{" "}
+              <span className="font-semibold text-slate-100">Webhook/Orchestration Layer:</span>{" "}
               evaluates triggers and queues journey actions.
             </li>
           </ul>
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-3 text-xs text-slate-400/80">
             Explanatory demo UI only. No real Bloomreach API calls are made.
           </p>
         </section>
 
         {activeTab === "Campaign Agent" && (
           <>
-            <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <section className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
               <h2 className="text-base font-semibold">Campaign Agent</h2>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   onClick={handleConnect}
                   disabled={isConnecting}
-                  className="inline-flex h-11 items-center justify-center rounded-lg bg-indigo-600 px-4 text-sm font-medium text-white transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-5 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition-all duration-200 hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {isConnecting ? "Connecting..." : "Connect Bloomreach MCP"}
                 </button>
                 {data && (
-                  <span className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700">
+                  <span className="rounded-full bg-emerald-500/15 px-3 py-1.5 text-xs font-medium text-emerald-300 shadow-sm shadow-emerald-500/20">
                     Connected to {data.source} at {connectedAt}
                   </span>
                 )}
@@ -338,13 +349,13 @@ export default function Home() {
             </section>
 
             {signals && (
-              <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <section className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
                 <h2 className="text-base font-semibold">Customer + Event Signals</h2>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-600">
+                  <span className="rounded-full bg-slate-800 px-3 py-1.5 text-slate-300">
                     Customer profiles analyzed: {signals.audienceSize.toLocaleString()}
                   </span>
-                  <span className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-600">
+                  <span className="rounded-full bg-slate-800 px-3 py-1.5 text-slate-300">
                     Event streams detected: 3 (view_product, add_to_cart, purchase)
                   </span>
                 </div>
@@ -358,31 +369,31 @@ export default function Home() {
               </section>
             )}
 
-            <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <section className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
               <h2 className="text-base font-semibold">Campaign brief</h2>
               <div className="mt-4 grid gap-4 lg:grid-cols-3">
                 <div className="lg:col-span-2">
                   <label
                     htmlFor="campaign-prompt"
-                    className="block text-sm font-medium text-slate-700"
+                    className="block text-sm font-medium text-slate-300"
                   >
                     Prompt
                   </label>
                   <textarea
                     id="campaign-prompt"
-                    className="mt-2 min-h-32 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-indigo-500 transition focus:ring-2"
+                    className="mt-2 min-h-32 w-full rounded-xl bg-slate-800 px-4 py-3 text-sm text-slate-100 outline-none ring-violet-500/70 transition-all duration-200 focus:ring-2"
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}
                   />
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="goal" className="block text-sm font-medium text-slate-700">
+                    <label htmlFor="goal" className="block text-sm font-medium text-slate-300">
                       Goal
                     </label>
                     <select
                       id="goal"
-                      className="mt-2 h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm outline-none ring-indigo-500 transition focus:ring-2"
+                      className="mt-2 h-12 w-full rounded-xl bg-slate-800 px-3 text-sm text-slate-100 outline-none ring-violet-500/70 transition-all duration-200 focus:ring-2"
                       value={goal}
                       onChange={(event) => setGoal(event.target.value as CampaignGoal)}
                     >
@@ -395,13 +406,13 @@ export default function Home() {
                     type="button"
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-slate-900 px-4 text-sm font-medium text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-5 text-sm font-semibold text-white shadow-lg shadow-indigo-900/40 transition-all duration-200 hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {isGenerating ? "Generating..." : "Generate Campaign"}
                   </button>
                 </div>
               </div>
-              {error && <p className="mt-4 text-sm font-medium text-rose-600">{error}</p>}
+              {error && <p className="mt-4 text-sm font-medium text-rose-300">{error}</p>}
             </section>
 
             {result && (
@@ -449,29 +460,29 @@ export default function Home() {
                   </ResultCard>
                 </section>
 
-                <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <section className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="text-base font-semibold">Journey Builder Canvas</h2>
-                    <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700">
+                    <span className="rounded-full bg-indigo-500/20 px-2.5 py-1 text-xs font-medium text-indigo-300 shadow-sm shadow-indigo-500/20">
                       Simulated orchestration flow
                     </span>
                   </div>
-                  <p className="mt-2 text-sm text-slate-600">
+                  <p className="mt-2 text-sm text-slate-300/85">
                     Connected journey nodes populated from generated campaign output when available.
                   </p>
                   <div className="mt-5 overflow-x-auto">
                     <div className="flex min-w-[1100px] items-stretch gap-2">
                       {journeyCanvasNodes.map((node, index) => (
                         <div key={node.title} className="flex items-center gap-2">
-                          <article className="w-56 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                          <article className="w-56 rounded-xl bg-slate-800/90 p-4 shadow-md shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-900/30">
+                            <p className="text-xs font-semibold text-indigo-300">
                               Node {index + 1}
                             </p>
-                            <h3 className="mt-1 text-sm font-semibold text-slate-900">{node.title}</h3>
-                            <p className="mt-2 text-xs leading-5 text-slate-600">{node.description}</p>
+                            <h3 className="mt-1 text-sm font-semibold text-slate-100">{node.title}</h3>
+                            <p className="mt-2 text-xs leading-5 text-slate-300/85">{node.description}</p>
                           </article>
                           {index < journeyCanvasNodes.length - 1 && (
-                            <span className="text-slate-400" aria-hidden="true">
+                            <span className="text-slate-500" aria-hidden="true">
                               →
                             </span>
                           )}
@@ -488,7 +499,7 @@ export default function Home() {
         {activeTab === "Event Simulator" && (
           <section className="grid gap-4 lg:grid-cols-5">
             <ResultCard title="Shopper profile">
-              <dl className="space-y-2 text-sm text-slate-700">
+              <dl className="space-y-2 text-sm text-slate-300/90">
                 <ProfileRow label="customer_id" value={profile.customer_id} />
                 <ProfileRow label="email" value={profile.email} />
                 <ProfileRow label="persona" value={profile.persona} />
@@ -497,7 +508,7 @@ export default function Home() {
               </dl>
             </ResultCard>
 
-            <div className="lg:col-span-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="lg:col-span-4 rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
               <h2 className="text-base font-semibold">Event Simulator</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 <ActionButton label="View Product" onClick={() => createEvent("product_view")} />
@@ -507,9 +518,9 @@ export default function Home() {
                 <ActionButton label="Email Click" onClick={() => createEvent("email_click")} />
               </div>
 
-              <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+              <div className="mt-5 overflow-x-auto rounded-xl bg-slate-900 shadow-inner shadow-black/40">
                 <table className="min-w-full divide-y divide-slate-200 text-left text-sm">
-                  <thead className="bg-slate-50 text-slate-600">
+                  <thead className="bg-slate-800 text-slate-300">
                     <tr>
                       <th className="px-3 py-2 font-medium">event_id</th>
                       <th className="px-3 py-2 font-medium">customer_id</th>
@@ -519,31 +530,31 @@ export default function Home() {
                       <th className="px-3 py-2 font-medium">payload</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200 bg-white">
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/70">
                     {events.length === 0 && (
                       <tr>
-                        <td className="px-3 py-4 text-slate-500" colSpan={6}>
+                        <td className="px-3 py-4 text-slate-400" colSpan={6}>
                           No events yet. Use the simulator buttons to generate a live stream.
                         </td>
                       </tr>
                     )}
                     {events.map((event) => (
                       <tr key={event.event_id}>
-                        <td className="px-3 py-2 font-mono text-xs">{event.event_id}</td>
-                        <td className="px-3 py-2">{event.customer_id}</td>
+                        <td className="px-3 py-2 font-mono text-xs text-slate-300">{event.event_id}</td>
+                        <td className="px-3 py-2 text-slate-300">{event.customer_id}</td>
                         <td className="px-3 py-2">
                           <Badge text={event.event_type} />
                         </td>
-                        <td className="px-3 py-2">{event.product_id}</td>
-                        <td className="px-3 py-2 text-xs">
+                        <td className="px-3 py-2 text-slate-300">{event.product_id}</td>
+                        <td className="px-3 py-2 text-xs text-slate-400">
                           {new Date(event.timestamp).toLocaleString()}
                         </td>
                         <td className="px-3 py-2">
-                          <details className="rounded-md border border-slate-200 bg-slate-50 p-2">
-                            <summary className="cursor-pointer text-xs font-medium text-slate-700">
+                          <details className="rounded-xl bg-slate-800 p-2 shadow-md shadow-black/20">
+                            <summary className="cursor-pointer text-xs font-medium text-slate-300 transition-colors duration-200 hover:text-slate-100">
                               View simulated API payload
                             </summary>
-                            <pre className="mt-2 overflow-x-auto whitespace-pre-wrap break-words rounded bg-slate-900 p-2 text-[11px] text-slate-100">
+                            <pre className="mt-2 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-slate-950 p-3 text-[11px] text-slate-100 shadow-lg shadow-indigo-950/20">
                               {JSON.stringify(toEventPayload(event), null, 2)}
                             </pre>
                           </details>
@@ -553,7 +564,7 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-3 text-xs text-slate-500">
+              <p className="mt-3 text-xs text-slate-400/80">
                 Event rows represent simulated API-style payloads only.
               </p>
             </div>
@@ -615,24 +626,41 @@ export default function Home() {
               </div>
             </ResultCard>
 
-            <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="lg:col-span-2 rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
               <h2 className="text-base font-semibold">Execution steps</h2>
-              <ol className="mt-4 space-y-2">
+              <ol className="relative mt-4 space-y-3 pl-5 before:absolute before:bottom-2 before:left-1.5 before:top-2 before:w-px before:bg-slate-700/80">
                 {journeyLog.steps.map((step, index) => (
                   <li
                     key={step}
-                    className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"
+                    className="relative flex items-center justify-between gap-3 rounded-xl bg-slate-800/80 px-4 py-3 shadow-sm shadow-black/20 transition-all duration-200 hover:bg-slate-800"
                   >
+                    <span
+                      className={`absolute -left-[1.1rem] h-3 w-3 rounded-full ${
+                        index <= 1
+                          ? "bg-blue-400"
+                          : index <= 3
+                            ? "bg-indigo-400"
+                            : "bg-emerald-400"
+                      }`}
+                    />
                     <div>
-                      <p className="text-sm text-slate-700">
+                      <p className="text-sm text-slate-200">
                         {index + 1}. {step}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-slate-400">
                         {getExecutionStepExplanation(step, events)}
                       </p>
                     </div>
-                    <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700">
-                      Executed
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                        index <= 1
+                          ? "bg-blue-500/20 text-blue-300"
+                          : index <= 3
+                            ? "bg-indigo-500/20 text-indigo-300"
+                            : "bg-emerald-500/20 text-emerald-300"
+                      }`}
+                    >
+                      {index <= 1 ? "Evaluating" : index <= 3 ? "Queued" : "Success"}
                     </span>
                   </li>
                 ))}
@@ -640,20 +668,20 @@ export default function Home() {
               <div className="mt-5">
                 <h3 className="text-sm font-semibold text-slate-900">Next Actions</h3>
                 <ol className="mt-3 space-y-2">
-                  <li className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                    <span className="font-semibold text-slate-900">1.</span> Wait 2 hours {"->"}
+                  <li className="rounded-xl bg-slate-800/80 px-4 py-3 text-sm text-slate-300 shadow-sm shadow-black/20">
+                    <span className="font-semibold text-slate-100">1.</span> Wait 2 hours {"->"}
                     check email open
                   </li>
-                  <li className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                    <span className="font-semibold text-slate-900">2.</span> If no open {"->"} resend
+                  <li className="rounded-xl bg-slate-800/80 px-4 py-3 text-sm text-slate-300 shadow-sm shadow-black/20">
+                    <span className="font-semibold text-slate-100">2.</span> If no open {"->"} resend
                     with new subject
                   </li>
-                  <li className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                    <span className="font-semibold text-slate-900">3.</span> If open but no click
+                  <li className="rounded-xl bg-slate-800/80 px-4 py-3 text-sm text-slate-300 shadow-sm shadow-black/20">
+                    <span className="font-semibold text-slate-100">3.</span> If open but no click
                     {"->"} send SMS
                   </li>
-                  <li className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                    <span className="font-semibold text-slate-900">4.</span> If purchase {"->"} exit
+                  <li className="rounded-xl bg-slate-800/80 px-4 py-3 text-sm text-slate-300 shadow-sm shadow-black/20">
+                    <span className="font-semibold text-slate-100">4.</span> If purchase {"->"} exit
                     journey
                   </li>
                 </ol>
@@ -664,18 +692,18 @@ export default function Home() {
                   {journeyActions.map((action, index) => (
                     <details
                       key={`${action.action_type}-${index}`}
-                      className="rounded-lg border border-slate-200 bg-slate-50 p-3"
+                      className="rounded-xl bg-slate-800/80 p-3 shadow-md shadow-black/20"
                     >
-                      <summary className="cursor-pointer text-sm font-medium text-slate-700">
+                      <summary className="cursor-pointer text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-slate-100">
                         View simulated {action.action_type.toUpperCase()} payload
                       </summary>
-                      <pre className="mt-2 overflow-x-auto whitespace-pre-wrap break-words rounded bg-slate-900 p-2 text-[11px] text-slate-100">
+                      <pre className="mt-2 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-slate-950 p-3 text-[11px] text-slate-100 shadow-lg shadow-indigo-950/20">
                         {JSON.stringify(action, null, 2)}
                       </pre>
                     </details>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-slate-500">
+                <p className="mt-3 text-xs text-slate-400/80">
                   These are simulated API-style queued actions; no real messages are sent.
                 </p>
               </div>
@@ -689,16 +717,16 @@ export default function Home() {
 
 function SignalCard({ label, value }: { label: string; value: string }) {
   return (
-    <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-2 text-lg font-semibold tracking-tight text-slate-900">{value}</p>
+    <article className="rounded-xl bg-slate-800/85 p-5 shadow-md shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-900/30">
+      <p className="text-sm font-medium text-slate-300/85">{label}</p>
+      <p className="mt-2 text-lg font-semibold tracking-tight text-slate-100">{value}</p>
     </article>
   );
 }
 
 function ResultCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-2xl bg-slate-900/70 p-7 shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-indigo-950/20">
       <h3 className="text-base font-semibold">{title}</h3>
       <div className="mt-3">{children}</div>
     </article>
@@ -707,9 +735,9 @@ function ResultCard({ title, children }: { title: string; children: React.ReactN
 
 function ProfileRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-      <dt className="font-mono text-xs text-slate-500">{label}</dt>
-      <dd className="text-sm font-medium text-slate-900">{value}</dd>
+    <div className="rounded-xl bg-slate-800/85 px-3 py-2 shadow-sm shadow-black/20">
+      <dt className="font-mono text-xs text-slate-400">{label}</dt>
+      <dd className="text-sm font-medium text-slate-100">{value}</dd>
     </div>
   );
 }
@@ -719,8 +747,9 @@ function ActionButton({ label, onClick }: { label: string; onClick: () => void }
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex h-10 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+      className="inline-flex h-10 items-center justify-center rounded-full bg-slate-800 px-4 text-sm font-medium text-slate-200 shadow-sm shadow-black/20 transition-all duration-200 hover:bg-slate-700 hover:shadow-md hover:shadow-indigo-900/30 active:scale-[0.98]"
     >
+      <span className="mr-1.5 text-indigo-300">●</span>
       {label}
     </button>
   );
@@ -728,7 +757,7 @@ function ActionButton({ label, onClick }: { label: string; onClick: () => void }
 
 function Badge({ text }: { text: string }) {
   return (
-    <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">
+    <span className="rounded-full bg-indigo-500/20 px-2 py-0.5 text-xs font-medium text-indigo-300">
       {text}
     </span>
   );
